@@ -1,15 +1,15 @@
-import React from "react";
-
+import React, { useState } from "react";
 import "../../../styles/product-card.css";
-
 import { Link } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/shopping-cart/cartSlice";
 
 const ProductCard = (props) => {
   const { id, title, image01, price } = props.item;
   const dispatch = useDispatch();
+
+  // State to manage the visibility of the "Item added" message
+  const [popupVisible, setPopupVisible] = useState(false);
 
   const addToCart = () => {
     dispatch(
@@ -20,6 +20,12 @@ const ProductCard = (props) => {
         price,
       })
     );
+
+    // Show the popup for a few seconds
+    setPopupVisible(true);
+    setTimeout(() => {
+      setPopupVisible(false);
+    }, 2000); // Hide the popup after 2 seconds
   };
 
   return (
@@ -32,13 +38,20 @@ const ProductCard = (props) => {
         <h5>
           <Link to={`/foods/${id}`}>{title}</Link>
         </h5>
-        <div className=" d-flex align-items-center justify-content-between ">
+        <div className="d-flex align-items-center justify-content-between">
           <span className="product__price">${price}</span>
           <button className="addTOCart__btn" onClick={addToCart}>
             Add to Cart
           </button>
         </div>
       </div>
+
+      {/* Popup message when item is added to cart */}
+      {popupVisible && (
+        <div className="popup-message">
+          Item added to cart!
+        </div>
+      )}
     </div>
   );
 };

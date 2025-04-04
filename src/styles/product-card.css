@@ -3,6 +3,7 @@
   text-align: center;
   padding: 30px;
   cursor: pointer;
+  position: relative; /* This ensures the popup is positioned relative to the product item */
 }
 
 .product__img {
@@ -36,6 +37,32 @@
   color: #fff;
   border-radius: 5px;
   font-size: 0.9rem;
+}
+
+.popup-message {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  opacity: 0;
+  animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media only screen and (max-width: 992px) {

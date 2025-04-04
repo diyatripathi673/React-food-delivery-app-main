@@ -94,7 +94,7 @@ const FoodDetails = () => {
                 <h2 className="product__title mb-3">{title}</h2>
                 <p className="product__price">
                   {" "}
-                  Price: <span>${price}</span>
+                  Price: <span>₹{price}</span>
                 </p>
                 <p className="category mb-5">
                   Category: <span>{category}</span>
@@ -109,13 +109,13 @@ const FoodDetails = () => {
             <Col lg="12">
               <div className="tabs d-flex align-items-center gap-5 py-3">
                 <h6
-                  className={` ${tab === "desc" ? "tab__active" : ""}`}
+                  className={` ₹{tab === "desc" ? "tab__active" : ""}`}
                   onClick={() => setTab("desc")}
                 >
                   Description
                 </h6>
                 <h6
-                  className={` ${tab === "rev" ? "tab__active" : ""}`}
+                  className={` ₹{tab === "rev" ? "tab__active" : ""}`}
                   onClick={() => setTab("rev")}
                 >
                   Review
